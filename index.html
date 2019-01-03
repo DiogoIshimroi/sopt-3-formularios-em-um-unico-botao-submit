@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Submit em 3 forms por LipESprY</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <form id="form1" action="trata_form1.php" method="get">
+            <input type="text" name="dadosform1">
+        </form>
+        <form id="form2" action="trata_form2.php" method="post">
+            <input type="text" name="dadosform2">
+        </form>
+        <form id="form3" action="trata_form3.php" method="post">
+            <input type="text" name="dadosform3">
+        </form>
+
+        <button id="submit-forms" type="button" class="btn btn-success">Submit nos 3 formularios</button>
+
+        <script type="text/javascript">
+            $(function(){
+                $('#submit-forms').on('click', function(e){
+
+                    // Formulário #1
+                    $.ajax({
+                        url: $('#form1').attr('action'),
+                        method: $('#form1').attr('method'),
+                        data: $('#form1').serialize(),
+                        dataType: 'html'
+                    })
+                    .done(function(ret){
+                        console.log(ret);
+                    })
+                    .fail(function(erro){
+                        console.log('Erro ao submeter o form: ');
+                        console.log(erro);
+                    });
+
+                    // Formulário #2
+                    $.ajax({
+                        url: $('#form2').attr('action'),
+                        method: $('#form2').attr('method'),
+                        data: $('#form2').serialize(),
+                        dataType: 'html'
+                    })
+                    .done(function(ret){
+                        console.log(ret);
+                    })
+                    .fail(function(erro){
+                        console.log('Erro ao submeter o form: ');
+                        console.log(erro);
+                    });
+
+                    // Formulário #3
+                    $.ajax({
+                        url: $('#form3').attr('action'),
+                        method: $('#form3').attr('method'),
+                        data: $('#form3').serialize(),
+                        dataType: 'html'
+                    })
+                    .done(function(ret){
+                        console.log(ret);
+                    })
+                    .fail(function(erro){
+                        console.log('Erro ao submeter o form: ');
+                        console.log(erro);
+                    });
+
+
+                });
+            });
+        </script>
+    </body>
+</html>
